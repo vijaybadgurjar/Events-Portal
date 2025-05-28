@@ -1,8 +1,10 @@
 package com.vijay.Event.Management.service;
 
+import com.vijay.Event.Management.dto.UserDto.UserUpdateRequestDto;
 import com.vijay.Event.Management.exception.UserNotFoundException;
 import com.vijay.Event.Management.model.User;
 import com.vijay.Event.Management.repository.UserRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +43,7 @@ public class UserService {
     }
 
 
-    public void updateUser(String email, UserUpdateRequestDto userUpdateRequestDto){
+    public void updateUser(String email, @Valid UserUpdateRequestDto userUpdateRequestDto){
         Optional<User> userOptional = userRepository.findByEmail(email);
         if(userOptional.isEmpty()){
             throw new UserNotFoundException("User not found!");

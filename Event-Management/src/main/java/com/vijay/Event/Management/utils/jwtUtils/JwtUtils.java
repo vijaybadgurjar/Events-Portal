@@ -82,4 +82,7 @@ public class JwtUtils {
         }
         return false;
     }
+
+    public String generateTokenFromUsername(UserDetails userDetails, String firstName, Set<javax.management.relation.Role> roles) {
+    }
 }
