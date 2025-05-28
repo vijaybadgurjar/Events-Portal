@@ -3,6 +3,7 @@ package com.vijay.Event.Management.service;
 import com.vijay.Event.Management.dto.EventDto.EventCreateRequestDto;
 import com.vijay.Event.Management.dto.EventDto.EventUpdateRequestDto;
 import com.vijay.Event.Management.exception.EventNotFoundException;
+import com.vijay.Event.Management.exception.UserNotFoundException;
 import com.vijay.Event.Management.model.User;
 import com.vijay.Event.Management.repository.EventRepository;
 import com.vijay.Event.Management.repository.TicketRepository;
@@ -86,7 +87,7 @@ public class EventService {
 
     private User getLoggedInUserHelper() {
         UserDetails userDetails = securityUtils.getAuthenticatedUserDetails();
-        String email = userDetails.getUsername();
+        String email = ((org.springframework.security.core.userdetails.UserDetails) userDetails).getUsername();
         Optional<User> userOptional = userRepository.findByEmail(email);
         if(userOptional.isEmpty()){
             throw new UserNotFoundException("User not found!");
