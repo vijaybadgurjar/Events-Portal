@@ -1,5 +1,6 @@
 package com.vijay.Event.Management.service;
 
+import com.vijay.Event.Management.dto.TicketDto.TicketCreateRequestDto;
 import com.vijay.Event.Management.exception.EventNotFoundException;
 import com.vijay.Event.Management.exception.UserNotFoundException;
 import com.vijay.Event.Management.model.Ticket;
@@ -8,6 +9,7 @@ import com.vijay.Event.Management.repository.EventRepository;
 import com.vijay.Event.Management.repository.TicketRepository;
 import com.vijay.Event.Management.repository.UserRepository;
 import com.vijay.Event.Management.utils.securityUtils.SecurityUtils;
+import jakarta.validation.Valid;
 import jdk.jfr.Event;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +27,7 @@ public class TicketService {
     private final EventRepository eventRepository;
     private final SecurityUtils securityUtils;
 
-    public Ticket createTicket(Long eventId, TicketCreateRequestDto ticketDto) {
+    public Ticket createTicket(Long eventId, @Valid TicketCreateRequestDto ticketDto) {
         User user = getLoggedInUserHelper();
         Event event = eventRepository.findById(eventId).orElseThrow(() -> new EventNotFoundException("Event not found!"));
 
