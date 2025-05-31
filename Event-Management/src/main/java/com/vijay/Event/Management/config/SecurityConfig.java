@@ -1,6 +1,7 @@
 package com.vijay.Event.Management.config;
 
 
+import com.vijay.Event.Management.service.CustomUserDetailsService;
 import com.vijay.Event.Management.utils.jwtUtils.AuthEntryPointJwt;
 import com.vijay.Event.Management.utils.jwtUtils.AuthTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,8 @@ public class SecurityConfig {
             "/webjars/**"
     };
 
-//    @Autowired
-//    private CustomUserDetailsService customUserDetailsService; // Service to load user-specific data for authentication
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService; // Service to load user-specific data for authentication
 
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler; // Handles unauthorized access (like invalid JWT)
@@ -55,7 +56,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests((authorizeRequests) ->
                 authorizeRequests
-                        .requestMatchers(PUBLIC_URLS).permitAll()
+                        .requestMatchers("user/signup","user/signin").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Allows pre-flight requests
                         .anyRequest().authenticated());
 
