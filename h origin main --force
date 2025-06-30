@@ -1,0 +1,153 @@
+[33mcommit 168be15a1cb063f44543a1333247bef5fd60466d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Vijay kumar <92264840+vijaybadgurjar@users.noreply.github.com>
+Date:   Wed May 28 23:26:39 2025 +0530
+
+    Create README.md
+
+[33mcommit 79a14af3989bf45585a91fe920475ac51196d59a[m
+Merge: 599b488 554337a
+Author: Vijay kumar <92264840+vijaybadgurjar@users.noreply.github.com>
+Date:   Wed May 28 23:18:15 2025 +0530
+
+    Merge pull request #5 from vijaybadgurjar/core-backend
+    
+    Core backend
+
+[33mcommit 554337aab3ea9714bb712a331ce373e2ab208749[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Wed May 28 23:17:32 2025 +0530
+
+    Swagger
+
+[33mcommit 05e2b36cd8381d0ea082b8c5ae5ad85aa4634330[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Wed May 28 23:14:13 2025 +0530
+
+    Event management controller
+
+[33mcommit 700d5b9328e6a0e8171facab8e5453232702b714[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Wed May 28 23:08:03 2025 +0530
+
+    Auth and User Controller
+
+[33mcommit 377e4c88ce14a3b035686eac81e053fe3155c5be[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Wed May 28 22:59:58 2025 +0530
+
+    Dto
+
+[33mcommit 599b4889bddb0676dd44279d0b74fc500d590988[m
+Merge: 3ed1d8b b5841e3
+Author: Vijay kumar <92264840+vijaybadgurjar@users.noreply.github.com>
+Date:   Wed May 28 20:16:04 2025 +0530
+
+    Merge pull request #4 from vijaybadgurjar/core-backend
+    
+    Core backend
+
+[33mcommit b5841e33b504cfed161b536b64e30278a83ff555[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Wed May 28 20:14:50 2025 +0530
+
+    Event service and Ticket service added
+
+[33mcommit 8a176b9a2028066387ae7b2a13d248e3c53eadaf[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Wed May 28 20:08:55 2025 +0530
+
+    Event not found Exception added
+
+[33mcommit d027c3c9dc623472283cc2ba1f450abf76a196ae[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Wed May 28 20:06:01 2025 +0530
+
+    Services added
+
+[33mcommit 413d1584f5c26daa3f47c0d0bb48011c020e947c[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Wed May 28 19:57:29 2025 +0530
+
+    Exception added
+
+[33mcommit 3ed1d8b7d7d7d74e618783dec5a3c689f57cb28e[m[33m ([m[1;32mdevelopment[m[33m)[m
+Merge: aa89daa 4d52e16
+Author: Vijay kumar <92264840+vijaybadgurjar@users.noreply.github.com>
+Date:   Tue May 27 15:25:51 2025 +0530
+
+    Merge pull request #3 from vijaybadgurjar/Repository
+    
+    Repository
+
+[33mcommit 4d52e168cb1fcda3ce82a7baea63c9668dbb5b14[m[33m ([m[1;31morigin/Repository[m[33m, [m[1;32mRepository[m[33m)[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Tue May 27 15:18:40 2025 +0530
+
+    User repository
+
+[33mcommit cd9351e69b909a1afcc73e26374f18b0386311fb[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Tue May 27 15:15:50 2025 +0530
+
+    Ticket repository
+
+[33mcommit da20b29f0b812836da993affce7bbc63102ac008[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Tue May 27 15:12:51 2025 +0530
+
+    Event repository added
+
+[33mcommit aa89daad59f8dde5de375c38ccab1fa141ffbca9[m
+Merge: d9d21f0 4b2270d
+Author: Vijay kumar <92264840+vijaybadgurjar@users.noreply.github.com>
+Date:   Tue May 27 15:04:26 2025 +0530
+
+    Merge pull request #2 from vijaybadgurjar/security
+    
+    Securtiy config file and Jwt files added
+
+[33mcommit 4b2270d64d21ee3e38d25355ac0202c006ad72e2[m[33m ([m[1;31morigin/security[m[33m, [m[1;32msecurity[m[33m)[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Tue May 27 15:03:04 2025 +0530
+
+    Securtiy config file and Jwt files added
+
+[33mcommit d9d21f0f9bdef2d8b3413df23b086962f315bd57[m
+Merge: 4854dd4 289fa8e
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Tue May 27 01:07:57 2025 +0530
+
+    Merge branch 'development'
+
+[33mcommit 289fa8e668a74c1eb0b17b491df6f5ea086f893c[m[33m ([m[1;31morigin/development[m[33m)[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Tue May 27 01:02:29 2025 +0530
+
+    Event model and Enum added
+
+[33mcommit 4854dd4688ce5d131b84993abcec4598c7c5eeb2[m
+Merge: 25d59f5 e0c5b17
+Author: Vijay kumar <92264840+vijaybadgurjar@users.noreply.github.com>
+Date:   Tue May 27 00:50:20 2025 +0530
+
+    Merge pull request #1 from vijaybadgurjar/development
+    
+    Ticket model added
+
+[33mcommit e0c5b171628efef670126315d000dafa3d7f0160[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Tue May 27 00:48:45 2025 +0530
+
+    Ticket model added
+
+[33mcommit 25d59f511c5e5c5fb8d3477b6455b74695b00ba3[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Tue May 27 00:35:23 2025 +0530
+
+    User model
+
+[33mcommit 3ef67e31802ddaae44b6a8af0963b9d0bc942c66[m
+Author: vijaybadgurjar <vijaybhdgujjar@gmail.com>
+Date:   Tue May 27 00:23:34 2025 +0530
+
+    Initial setup
