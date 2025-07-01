@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Button, Drawer, List, ListItem, ListItemText, useMediaQuery } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import {useSelector, useDispatch} from 'react-redux'Add commentMore actions
+import { selectEmail } from '../../features/user/userSelectors';
+
+import { AppBar, Toolbar, IconButton, Button, Menu, MenuItem, Box } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Button, Menu, MenuItem, Tooltip } from '@mui/material';
+import { LoginOutlined, LogoutOutlined, AccountBoxOutlined } from '@mui/icons-material';
 import AuthService from '../../services/AuthService';
 import './Header.css';
+import { AccountCircle } from '@mui/icons-material';
 
 const Header: React.FC = () => {
+    const email = useSelector(selectEmail);Add commentMore actions
+        const dispatch = useDispatch();
+        const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const navigate = useNavigate();
     const location = useLocation();
     const isLoggedIn = !!localStorage.getItem('jwtToken');
-    const isSmallScreen = useMediaQuery('(max-width:600px)');
-    const [drawerOpen, setDrawerOpen] = useState(false);
+
 
     const handleLogin = () => {
         navigate('/login');
@@ -18,93 +23,74 @@ const Header: React.FC = () => {
     };
 
     const handleLogout = () => {
-        AuthService.logout();
+        AuthService.logout(dispatch);
         window.location.reload();
     };
 
-    const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-        if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
-            return;
-        }
-        setDrawerOpen(open);
-    };
+       const handleMenu = (event: React.MouseEvent<HTMLElement>) => {Add commentMore actions
+            setAnchorEl(event.currentTarget);
+        };
 
-    const menuItems = (
-        <List>
-            {location.pathname !== '/' && (
-                <ListItem component="button" onClick={() => { navigate('/'); setDrawerOpen(false); }}>
-                    <ListItemText primary="Home" />
-                </ListItem>
-            )}
-            {location.pathname !== '/profile' && (
-                <ListItem component="button" onClick={() => { navigate('/profile'); setDrawerOpen(false); }}>
-                    <ListItemText primary="Profile" />
-                </ListItem>
-            )}
-//             {location.pathname !== '/about' && (
-//                 <ListItem component="button" onClick={() => { navigate('/about'); setDrawerOpen(false); }}>
-//                     <ListItemText primary="About" />
-//                 </ListItem>
-//             )}
-//             {location.pathname !== '/contact' && (
-//                 <ListItem component="button" onClick={() => { navigate('/contact'); setDrawerOpen(false); }}>
-//                     <ListItemText primary="Contact" />
-//                 </ListItem>
-//             )}
-            {isLoggedIn ? (
-                <ListItem component="button" onClick={handleLogout}>
-                    <ListItemText primary="Logout" />
-                </ListItem>
-            ) : (
-                location.pathname !== '/login' && (
-                    <ListItem component="button" onClick={handleLogin}>
-                        <ListItemText primary="Login" />
-                    </ListItem>
-                )
-            )}
-        </List>
-    );
+      const handleClose = () => {Add commentMore actions
+            setAnchorEl(null);
+        };
 
     return (
         <AppBar position="sticky" className="header-appbar">
             <Toolbar className="header-toolbar">
                 <IconButton edge="start" color="inherit" aria-label="home" className="header-logo-button" onClick={() => navigate('/')}>
                     <img src="/evs-logoName.png" alt="EventBazaar Logo" className="header-logo" />
-                </IconButton>
+                 <div className='header-buttons'>Add commentMore actions
+                                    {isLoggedIn ? (
+                                        <div>
+                                            <IconButton
+                                                aria-controls='manu-appbar'
+                                                onClick={handleMenu}
+                                                color="inherit">
+                                                {email}<AccountCircle />
+                                            </IconButton>
+                                            <Menu
+                                                id="menu-appbar"
+                                                anchorEl={anchorEl}
+                                                anchorOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                keepMounted
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                open={Boolean(anchorEl)}
+                                                onClose={handleClose}
+                                            >
 
-                {isSmallScreen ? (
-                    <>
-                        <div className="header-menu-button">
-                            <IconButton edge="end" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
-                                <MenuIcon />
-                            </IconButton>
+                                                <MenuItem onClick={() => navigate('/profile')}>
+                                                   <Box>Add commentMore actions
+                                                                                     <AccountBoxOutlined />  Account
+                                                                                     </Box>
+                                                                                 </MenuItem>
+                                                                                 <MenuItem onClick={() => navigate('/users')}>
+                                                                                     <Box>
+                                                                                     <AccountBoxOutlined />  All Users
+                                                                                     </Box>
+
+                                                <MenuItem onClick={handleLogout}>
+                                                    <Box>Add commentMore actions
+                                                              <LogoutOutlined />  Logout
+                                                      </Box>
+                                                </MenuItem>
+
+                                            </Menu>
                         </div>
-                        <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)} className="header-drawer">
-                            {menuItems}
-                        </Drawer>
-                    </>
-                ) : (
-                    <div className="header-buttons">
-                        {location.pathname !== '/' && (
-                            <Button color="inherit" className="header-button" onClick={() => navigate('/')}>Home</Button>
-                        )}
-                        {location.pathname !== '/profile' && (
-                            <Button color="inherit" className="header-button" onClick={() => navigate('/profile')}>Profile</Button>
-                        )}
-
-                        {isLoggedIn ? (
-                            <Button color="inherit" className="header-button" onClick={handleLogout}>
-                                Logout
+                                                    ) : (Add commentMore actions
+                                                         location.pathname !== '/login' && (
+                                                             <Button color="inherit" className="header-button" onClick={handleLogin}>
+                                                                 <LoginOutlined />
                             </Button>
-                        ) : (
-                            location.pathname !== '/login' && (
-                                <Button color="inherit" className="header-button" onClick={handleLogin}>
-                                    Login
-                                </Button>
-                            )
-                        )}
-                    </div>
-                )}
+                )
+            )}
+        </div>
             </Toolbar>
         </AppBar>
     );

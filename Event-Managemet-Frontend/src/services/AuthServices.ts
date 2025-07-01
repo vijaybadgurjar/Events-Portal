@@ -1,4 +1,6 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { login, logout } from '../features/user/userSlice';Add commentMore actions
+import { Dispatch } from '@reduxjs/toolkit';
+import {jwtDecode} from 'jwt-decode'
 
 
 const API_URL = 'http://localhost:8080/api/auth';
@@ -56,7 +58,7 @@ class AuthService {
         }
     }
 
-    async login(credentials: LoginRequest): Promise<LoginResponse> {
+        async login(credentials: LoginRequest, dispatch: Dispatch): Promise<LoginResponse> {
         try {
             const response = await this.axiosInstance.post<LoginResponse>('/login', credentials);
             console.log(response);
@@ -65,6 +67,13 @@ class AuthService {
                 this.setAuthHeader(response.data.jwtToken);
                 localStorage.setItem('jwtToken', response.data.jwtToken);
             }
+
+           const decodedJWT = jwtDecode(response.data.jwtToken);Add commentMore actions
+                    console.log(decodedJWT);
+
+                    dispatch(login({
+                        email: decodedJWT.sub ?? null
+                    }));
 
             return response.data;
         } catch (error) {
@@ -86,16 +95,17 @@ class AuthService {
 
     async passwordUpdate(credentials: passwordUpdateRequest): Promise<string> {
         try {
-            const response = await this.axiosInstance.put<string>('/update-password', credentials);
+                await this.axiosInstance.put<string>('/update-password', credentials);
         } catch (error) {
             throw error;
         }
         return "Password Updated Successfully";
     }
 
-    logout(): void {
+logout(dispatch: Dispatch): void {
         localStorage.removeItem('jwtToken');
         this.setAuthHeader(null);
+        dispatch(logout());
     }
 
 
