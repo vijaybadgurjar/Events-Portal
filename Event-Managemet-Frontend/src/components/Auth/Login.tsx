@@ -1,4 +1,5 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React from 'react';Add commentMore actions
+import {useDispatch} from 'react-redux'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +10,7 @@ import AuthService from '../../services/AuthService';
 
 const Login: React.FC = () => {
     const navigate = useNavigate();
-
+ const dispatch = useDispatch();
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -51,6 +52,7 @@ const Login: React.FC = () => {
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             try {
                 const response = await AuthService.login(values);
+                const response = await AuthService.login(values, dispatch);
                 if (response.jwtToken) {
                     navigate('/');
                 } else {
